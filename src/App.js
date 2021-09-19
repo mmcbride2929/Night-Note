@@ -22,7 +22,7 @@ function App() {
   );
 }
 
-// Test
+// New
 export default App;
 
 const Page = styled.div`
