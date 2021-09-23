@@ -1,16 +1,13 @@
 import React from 'react';
 import Header from '../components/Header/Header';
-import ButtonRatings from '../components/ButtonRatings/ButtonRatings';
-import Note from '../components/Note/Note';
+import Form from '../components/Form/Form';
 
 const Home = () => {
   return (
     <>
       <Header />
       <body>
-        <ButtonRatings />
-
-        <Note />
+        <Form />
       </body>
     </>
   );

@@ -22,7 +22,6 @@ function App() {
   );
 }
 
-// New
 export default App;
 
 const Page = styled.div`
