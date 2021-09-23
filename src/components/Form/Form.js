@@ -1,18 +1,19 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { Link, useHistory } from 'react-router-dom';
-import ButtonRatings from '../ButtonRatings/ButtonRatings';
+import { useHistory } from 'react-router-dom';
+import ButtonRating from '../ButtonRating/ButtonRating';
 
 const Note = () => {
-  const [author, setAuthor] = useState('');
-  const [note, setNote] = useState('');
-  const [charCount, setCharCount] = useState(0);
+  const [author, setAuthor] = useState(''); // author value
+  const [note, setNote] = useState(''); // text area value
+  const [charCount, setCharCount] = useState(500); // text area characters amount
+  const [activeButton, setActiveButton] = useState(null); // button ratings
 
   let history = useHistory();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const noteObject = { author, note };
+    const noteObject = { author, note, activeButton };
     console.log(noteObject);
 
     fetch('http://localhost:8000/notes', {
@@ -25,11 +26,36 @@ const Note = () => {
     });
   };
 
+  const handleError = (e) => {
+    e.preventDefault();
+    alert("Please select a rating button below today's date.");
+  };
+
   return (
     <NoteContainer>
-      <ButtonRatings />
+      <ButtonContainer>
+        <Wrapper onClick={() => setActiveButton(1)}>
+          <ButtonRating
+            label={'productive'}
+            className={activeButton === 1 ? 'active' : ''}
+          />
+        </Wrapper>
+        <Wrapper onClick={() => setActiveButton(2)}>
+          <ButtonRating
+            label={'average'}
+            className={activeButton === 2 ? 'active' : ''}
+          />
+        </Wrapper>
+        <Wrapper onClick={() => setActiveButton(3)}>
+          <ButtonRating
+            label={'unproductive'}
+            className={activeButton === 3 ? 'active' : ''}
+          />
+        </Wrapper>
+      </ButtonContainer>
+
       <FormContainer>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={activeButton ? handleSubmit : handleError}>
           <InputContainer>
             <label>Author:</label>
             <input
@@ -48,11 +74,15 @@ const Note = () => {
             maxLength="500"
             onChange={(e) => {
               setNote(e.target.value);
-              setCharCount(e.target.value.length);
+              setCharCount(500 - e.target.value.length);
             }}
           />
           <CharCount>
-            <h5>{charCount + ' Characters Remaining..'} </h5>
+            <h5>
+              {charCount === 1
+                ? charCount + ' Character Remaining..'
+                : charCount + ' Characters Remaining..'}{' '}
+            </h5>
           </CharCount>
 
           <button type="submit">Submit</button>
@@ -63,6 +93,15 @@ const Note = () => {
 };
 
 export default Note;
+
+const Wrapper = styled.div``;
+
+const ButtonContainer = styled.div`
+  display: flex;
+  margin-top: 40px;
+  padding: 20px;
+  justify-content: center;
+`;
 
 const CharCount = styled.div`
   width: 60%;

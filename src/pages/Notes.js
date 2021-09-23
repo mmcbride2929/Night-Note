@@ -28,6 +28,11 @@ const Notes = () => {
             <SingleNote key={index}>
               <h3>{note.author}</h3>
               <p>{note.note}</p>
+              <p>
+                {note.activeButton === 1 && 'Productive'}
+                {note.activeButton === 2 && 'Average'}
+                {note.activeButton === 3 && 'Unproductive'}
+              </p>
             </SingleNote>
           );
         })}

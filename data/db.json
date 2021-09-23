@@ -3,51 +3,20 @@
     {
       "author": "Spencer Brown",
       "note": "Today was solid, nothing too out of the ordinary. My workout went well, but I should probably study a little longer in the evening. There's always tomorrow!",
-      "id": ""
+      "activeButton": 2,
+      "id": "fMCW7Nv"
     },
     {
       "author": "Candace Williams",
       "note": "Finally finished this essay!! Looks like i'll be relaxing all weekend!",
-      "id": ""
+      "activeButton": 3,
+      "id": "BdHJdf6"
     },
     {
       "author": "Jason Sims",
-      "note": "If I don't want to fail this class I need to wake up on time.. Starting tomorrow i'm going to make it a point to show up on time!"
-    },
-    {
-      "author": "Johny",
-      "note": "The green dolphin ran over a tractor on Thursday at 4PM",
-      "id": "hGgXzHk"
-    },
-    {
-      "author": "rungriurg",
-      "note": "Red penguins! ",
-      "id": "D7talfe"
-    },
-    {
-      "author": "d",
-      "note": "d",
-      "id": "_X240RI"
-    },
-    {
-      "author": "sdf",
-      "note": "ffffff",
-      "id": "cPympH_"
-    },
-    {
-      "author": "this is gonna work",
-      "note": "Trussssssss",
-      "id": "3gTXHri"
-    },
-    {
-      "author": "Tammy",
-      "note": "Potatoe Steve!",
-      "id": "_mEVjrP"
-    },
-    {
-      "author": "f",
-      "note": "f",
-      "id": "q7Ip7mR"
+      "note": "If I don't want to fail this class I need to wake up on time.. Starting tomorrow i'm going to make it a point to show up on time!",
+      "activeButton": 1,
+      "id": "6j1A_uv"
     }
   ]
 }
