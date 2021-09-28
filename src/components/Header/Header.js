@@ -1,13 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const Header = () => {
-  const current = new Date();
-
-  const date = `${
-    current.getMonth() + 1
-  }/${current.getDate()}/${current.getFullYear()}`;
-
+const Header = ({ date, time }) => {
   return (
     <HeaderContainer>
       <h1>How Did Today Go?</h1>
@@ -23,7 +17,7 @@ const HeaderContainer = styled.div`
   margin: 0 auto;
   color: whitesmoke;
   text-align: center;
-  padding: 50px;
+  padding: 80px;
   align-items: center;
 
   > h1 {
@@ -34,6 +28,7 @@ const HeaderContainer = styled.div`
   }
 
   > h5 {
+    font-family: 'Lato', sans-serif;
     margin-top: 10px;
     font-size: 1rem;
     color: whitesmoke;

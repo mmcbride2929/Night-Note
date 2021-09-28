@@ -12,8 +12,8 @@ const StyledButton = styled.button`
   color: white;
   width: 140px;
   margin: 0px 35px;
-  border: 1px solid black;
-  background-color: #506680;
+  border: 2px solid #373e47;
+  background-color: #373e47;
   text-transform: uppercase;
   letter-spacing: 0.5px;
   box-shadow: rgba(0, 0, 0, 0.12) 0px 2px 4px, rgba(0, 0, 0, 0.24) 0px 2px 4px;

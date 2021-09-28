@@ -3,18 +3,17 @@ import styled from 'styled-components';
 import { useHistory } from 'react-router-dom';
 import ButtonRating from '../ButtonRating/ButtonRating';
 
-const Note = () => {
+const Form = ({ time }) => {
   const [author, setAuthor] = useState(''); // author value
   const [note, setNote] = useState(''); // text area value
-  const [charCount, setCharCount] = useState(500); // text area characters amount
+  const [charCount, setCharCount] = useState(200); // text area characters amount
   const [activeButton, setActiveButton] = useState(null); // button ratings
 
   let history = useHistory();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const noteObject = { author, note, activeButton };
-    console.log(noteObject);
+    const noteObject = { author, note, activeButton, time };
 
     fetch('http://localhost:8000/notes', {
       method: 'POST',
@@ -22,12 +21,12 @@ const Note = () => {
       body: JSON.stringify(noteObject),
     }).then(() => {
       history.push('/notes'); // directs us to notes page after added to db
-      console.log('new blog added');
     });
   };
 
   const handleError = (e) => {
     e.preventDefault();
+
     alert("Please select a rating button below today's date.");
   };
 
@@ -62,7 +61,7 @@ const Note = () => {
               required
               type="text"
               value={author}
-              maxLength="30"
+              maxLength="25"
               onChange={(e) => setAuthor(e.target.value)}
             />
           </InputContainer>
@@ -71,10 +70,10 @@ const Note = () => {
             id="note"
             placeholder="Say Something..."
             value={note}
-            maxLength="500"
+            maxLength="200"
             onChange={(e) => {
               setNote(e.target.value);
-              setCharCount(500 - e.target.value.length);
+              setCharCount(200 - e.target.value.length);
             }}
           />
           <CharCount>
@@ -92,7 +91,7 @@ const Note = () => {
   );
 };
 
-export default Note;
+export default Form;
 
 const Wrapper = styled.div``;
 
@@ -129,10 +128,11 @@ const InputContainer = styled.div`
 
   input {
     padding: 5px;
-    width: 20%;
+    width: 30%;
     border-radius: 5px;
-    background-color: #858ca0;
-    border: none;
+    border: 2px solid #373e47;
+    background-color: #2d333b;
+
     outline: none;
     color: whitesmoke;
     box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px,
@@ -165,21 +165,23 @@ const FormContainer = styled.div`
     font-size: 1rem;
     font-family: 'Roboto', sans-serif;
     height: 200px;
-    width: 60%;
+    width: 80%;
     margin: 0px auto;
     padding: 40px 20px;
     border-radius: 5px;
-    background-color: #858ca0;
+    background-color: #2d333b;
+    border: 2px solid #373e47;
     box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px,
       rgba(0, 0, 0, 0.23) 0px 6px 6px;
     resize: none;
-    border: none;
+
     outline: none;
   }
 
   form > button {
     text-decoration: none;
     margin: 0 auto;
+    margin-bottom: 15px;
     padding: 20px;
     text-decoration: none;
     text-transform: uppercase;
@@ -194,7 +196,7 @@ const FormContainer = styled.div`
 
     :hover {
       cursor: pointer;
-      background-color: #506680;
+      background-color: #373e47;
       color: whitesmoke;
       box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px,
         rgba(0, 0, 0, 0.23) 0px 6px 6px;
@@ -206,4 +208,9 @@ const NoteContainer = styled.div`
   display: flex;
   flex-direction: column;
   height: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  border-radius: 10px;
+  border: 2px solid #373e47;
+  box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
 `;
