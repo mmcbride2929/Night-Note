@@ -39,6 +39,10 @@ const Wrapper = styled.div`
   margin: 20px auto;
   padding: 4px 6px;
 
+  @media (max-width: 500px) {
+    margin: 10px auto;
+  }
+
   .MuiSvgIcon-root {
     font-size: 2rem;
     cursor: pointer;

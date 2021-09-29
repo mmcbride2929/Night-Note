@@ -23,8 +23,6 @@ const Notes = () => {
         .then((data) => {
           setIsLoading(false);
           setNoteArray(data); // capture data
-          // setCurrentPage(Math.ceil(data.length / postsPerPage));
-          // setNoteArrayCopy(noteArray.slice(0).reverse());
         });
     }, 500);
   }, []);
@@ -80,10 +78,15 @@ const Notes = () => {
 
 export default Notes;
 
-const Wrapper = styled.div``;
+const Wrapper = styled.div`
+  background-color: #22272e;
+`;
 
 const Loading = styled.p`
   color: whitesmoke;
+  font-size: 2rem;
+  text-align: center;
+  padding: 100px;
 `;
 
 const NotesContainer = styled.div`
@@ -112,29 +115,61 @@ const SingleNote = styled.div`
     text-align: left;
     padding: 10px 15px;
     flex: 0.75;
+
+    @media (max-width: 700px) {
+      text-align: center;
+    }
+  }
+
+  @media (max-width: 700px) {
+    flex-direction: column;
+    height: 225px;
+  }
+
+  @media (max-width: 500px) {
+    width: 80%;
+    height: 300px;
+    font-size: 1.1rem;
+    margin-top: 0px;
+    margin-bottom: 25px;
   }
 `;
 
 const ContentWrapper = styled.div`
   background-color: #22272e;
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
   align-items: center;
   flex-direction: column;
   height: 100%;
   flex: 0.25;
   word-break: break-word;
 
+  @media (max-width: 700px) {
+    width: 100%;
+  }
+
   .MuiSvgIcon-root {
     font-size: 1.8rem;
     padding: 5px;
+
+    @media (max-width: 500px) {
+      margin-top: 8px;
+    }
   }
 
   h3 {
     padding: 7px;
+    @media (max-width: 500px) {
+      padding: 2px;
+    }
   }
 
   h5 {
     padding-bottom: 5px;
+  }
+
+  @media (max-width: 500px) {
+    width: 100%;
   }
 `;

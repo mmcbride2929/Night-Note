@@ -124,6 +124,11 @@ const CharCount = styled.div`
     color: whitesmoke;
     font-size: 1rem;
     font-weight: 500;
+
+    @media (max-width: 500px) {
+      font-size: 0.9rem;
+      padding-bottom: 0px;
+    }
   }
 `;
 
