@@ -1,6 +1,7 @@
 import React from 'react';
 import Header from '../components/Header/Header';
 import Form from '../components/Form/Form';
+import styled from 'styled-components';
 
 const Home = () => {
   const current = new Date();
@@ -16,13 +17,17 @@ const Home = () => {
   });
 
   return (
-    <>
+    <Wrapper>
       <Header date={date} />
       <body>
         <Form time={currentTime} />
       </body>
-    </>
+    </Wrapper>
   );
 };
 
 export default Home;
+
+const Wrapper = styled.div`
+  background-color: #22272e;
+`;

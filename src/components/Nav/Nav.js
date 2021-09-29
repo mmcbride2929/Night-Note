@@ -32,7 +32,6 @@ const StyledLink = styled(Link)`
   text-decoration: none;
   font-size: 1.1rem;
   color: whitesmoke;
-
   padding: 8px 12px;
   padding-top: 5px;
   padding-bottom: 0px;
@@ -60,6 +59,10 @@ const Wrapper = styled.div`
   padding: 10px;
   align-items: center;
   max-width: 1200px;
+
+  @media (max-width: 500px) {
+    flex-direction: column;
+  }
 `;
 
 const NavLeft = styled.div`
@@ -69,11 +72,19 @@ const NavLeft = styled.div`
   align-items: center;
   letter-spacing: 0.9px;
 
+  @media (max-width: 500px) {
+    padding: 20px;
+  }
+
   > .MuiSvgIcon-root {
     font-size: 40px;
     margin-top: 0;
     margin-left: 5px;
     color: white;
+
+    @media (max-width: 500px) {
+      display: none;
+    }
   }
 `;
 

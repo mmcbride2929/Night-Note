@@ -100,12 +100,25 @@ const ButtonContainer = styled.div`
   margin-top: 40px;
   padding: 20px;
   justify-content: center;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    margin: 0px auto;
+    margin-top: 10px;
+    padding: 5px;
+  }
 `;
 
 const CharCount = styled.div`
   width: 60%;
   margin: 0 auto;
   text-align: right;
+
+  @media (max-width: 1024px) {
+    padding: 8px;
+    text-align: center;
+  }
+
   h5 {
     padding: 5px;
     color: whitesmoke;
@@ -120,10 +133,18 @@ const InputContainer = styled.div`
   justify-content: center;
   padding: 25px;
 
+  @media (max-width: 500px) {
+    flex-direction: column;
+  }
+
   label {
     text-align: center;
     color: whitesmoke;
     margin: 0 15px;
+
+    @media (max-width: 500px) {
+      padding: 5px;
+    }
   }
 
   input {
@@ -132,11 +153,17 @@ const InputContainer = styled.div`
     border-radius: 5px;
     border: 2px solid #373e47;
     background-color: #2d333b;
-
     outline: none;
     color: whitesmoke;
     box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px,
       rgba(0, 0, 0, 0.23) 0px 6px 6px;
+
+    @media (max-width: 768px) {
+      width: 60%;
+    }
+    @media (max-width: 500px) {
+      width: 80%;
+    }
   }
 `;
 
@@ -164,7 +191,7 @@ const FormContainer = styled.div`
     color: whitesmoke;
     font-size: 1rem;
     font-family: 'Roboto', sans-serif;
-    height: 200px;
+    height: 150px;
     width: 80%;
     margin: 0px auto;
     padding: 40px 20px;
@@ -174,7 +201,6 @@ const FormContainer = styled.div`
     box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px,
       rgba(0, 0, 0, 0.23) 0px 6px 6px;
     resize: none;
-
     outline: none;
   }
 
@@ -193,6 +219,10 @@ const FormContainer = styled.div`
     width: 80px;
     box-shadow: rgba(0, 0, 0, 0.12) 0px 2px 4px, rgba(0, 0, 0, 0.24) 0px 2px 4px;
     letter-spacing: 0.3px;
+
+    @media (max-width: 1024px) {
+      margin-top: 30px;
+    }
 
     :hover {
       cursor: pointer;
@@ -213,4 +243,8 @@ const NoteContainer = styled.div`
   border-radius: 10px;
   border: 2px solid #373e47;
   box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+
+  @media (max-width: 1024px) {
+    width: 85%;
+  }
 `;

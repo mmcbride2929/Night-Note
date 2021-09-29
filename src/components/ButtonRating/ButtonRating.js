@@ -18,6 +18,9 @@ const StyledButton = styled.button`
   letter-spacing: 0.5px;
   box-shadow: rgba(0, 0, 0, 0.12) 0px 2px 4px, rgba(0, 0, 0, 0.24) 0px 2px 4px;
 
+  @media (max-width: 768px) {
+    margin: 15px 0;
+  }
   :hover {
     background-color: whitesmoke;
     border: 1px solid black;
