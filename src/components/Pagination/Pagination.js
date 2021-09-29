@@ -12,14 +12,14 @@ const Pagination = ({ postsPerPage, totalPosts, paginate, currentPage }) => {
 
   return (
     <Wrapper>
+      <span onClick={() => (currentPage > 1 ? paginate(currentPage - 1) : 1)}>
+        <ChevronLeftIcon />
+      </span>
       <span
         onClick={() =>
           currentPage < pageNumbers.length ? paginate(currentPage + 1) : 1
         }
       >
-        <ChevronLeftIcon />
-      </span>
-      <span onClick={() => (currentPage > 1 ? paginate(currentPage - 1) : 1)}>
         <ChevronRightIcon />
       </span>
     </Wrapper>

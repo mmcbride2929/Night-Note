@@ -11,6 +11,7 @@ const Notes = () => {
   const [noteArray, setNoteArray] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage, setPostsPerPage] = useState(5);
+  // const [noteArrayCopy, setNoteArrayCopy] = useState([]);
 
   // fetching => json.db & catching the state return
   useEffect(() => {
@@ -21,17 +22,23 @@ const Notes = () => {
         })
         .then((data) => {
           setIsLoading(false);
-          setNoteArray(data);
-          setCurrentPage(Math.ceil(data.length / postsPerPage));
+          setNoteArray(data); // capture data
+          // setCurrentPage(Math.ceil(data.length / postsPerPage));
+          // setNoteArrayCopy(noteArray.slice(0).reverse());
         });
     }, 500);
   }, []);
 
   // getting current posts
+
   const indexOfLastPost = currentPage * postsPerPage;
   const indexOfFirstPost = indexOfLastPost - postsPerPage;
-  const currentPosts = noteArray.slice(indexOfFirstPost, indexOfLastPost);
-
+  console.log(noteArray);
+  const testArr = noteArray.slice(0).reverse();
+  console.log(testArr);
+  // am I changing the original array with this slice and reverse?
+  // is this a shallow copy?
+  const currentPosts = testArr.slice(indexOfFirstPost, indexOfLastPost);
   //change page
   const paginate = (pageNumber) => {
     setCurrentPage(pageNumber);
@@ -82,7 +89,7 @@ const Loading = styled.p`
 const NotesContainer = styled.div`
   margin-top: 35px;
   display: flex;
-  flex-direction: column-reverse;
+  flex-direction: column;
   align-items: left;
   justify-content: center;
 `;
