@@ -6,6 +6,7 @@ const ButtonRating = ({ label, className }) => {
 
 export default ButtonRating;
 
+//building button for each rating
 const StyledButton = styled.button`
   border-radius: 5px;
   padding: 12px 8px;
@@ -29,6 +30,7 @@ const StyledButton = styled.button`
       rgba(0, 0, 0, 0.23) 0px 6px 6px;
   }
 
+  // button highlight onClick
   &.active {
     border: 1px solid whitesmoke;
   }

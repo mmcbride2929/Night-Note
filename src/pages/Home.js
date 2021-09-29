@@ -4,6 +4,7 @@ import Form from '../components/Form/Form';
 import styled from 'styled-components';
 
 const Home = () => {
+  // getting date & time to pass to Header & Form
   const current = new Date();
 
   let date = `${

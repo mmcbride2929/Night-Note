@@ -11,9 +11,8 @@ const Notes = () => {
   const [noteArray, setNoteArray] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage, setPostsPerPage] = useState(5);
-  // const [noteArrayCopy, setNoteArrayCopy] = useState([]);
 
-  // fetching => json.db & catching the state return
+  // fetching notes from json.db
   useEffect(() => {
     setTimeout(() => {
       fetch('http://localhost:8000/notes')
@@ -27,17 +26,13 @@ const Notes = () => {
     }, 500);
   }, []);
 
-  // getting current posts
-
   const indexOfLastPost = currentPage * postsPerPage;
   const indexOfFirstPost = indexOfLastPost - postsPerPage;
-  console.log(noteArray);
-  const testArr = noteArray.slice(0).reverse();
-  console.log(testArr);
-  // am I changing the original array with this slice and reverse?
-  // is this a shallow copy?
-  const currentPosts = testArr.slice(indexOfFirstPost, indexOfLastPost);
-  //change page
+
+  // am I changing the original array with slice and reverse?
+  const notesReversed = noteArray.slice(0).reverse(); // is this a shallow copy?
+  const currentPosts = notesReversed.slice(indexOfFirstPost, indexOfLastPost);
+
   const paginate = (pageNumber) => {
     setCurrentPage(pageNumber);
   };

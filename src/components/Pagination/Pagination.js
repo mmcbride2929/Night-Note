@@ -1,4 +1,3 @@
-import React, { useState } from 'react';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import styled from 'styled-components';
@@ -6,6 +5,7 @@ import styled from 'styled-components';
 const Pagination = ({ postsPerPage, totalPosts, paginate, currentPage }) => {
   const pageNumbers = [];
 
+  // calculating # of pages & storing
   for (let i = 1; i <= Math.ceil(totalPosts / postsPerPage); i++) {
     pageNumbers.push(i);
   }

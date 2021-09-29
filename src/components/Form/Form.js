@@ -7,14 +7,16 @@ const Form = ({ time }) => {
   const [author, setAuthor] = useState(''); // author value
   const [note, setNote] = useState(''); // text area value
   const [charCount, setCharCount] = useState(200); // text area characters amount
-  const [activeButton, setActiveButton] = useState(null); // button ratings
+  const [activeButton, setActiveButton] = useState(null); // button rating highlight
 
-  let history = useHistory();
+  let history = useHistory(); // hook to access react router history object
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    // creating a note object
     const noteObject = { author, note, activeButton, time };
 
+    // posting the note to the db
     fetch('http://localhost:8000/notes', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -24,14 +26,15 @@ const Form = ({ time }) => {
     });
   };
 
+  // require active button
   const handleError = (e) => {
     e.preventDefault();
-
     alert("Please select a rating button below today's date.");
   };
 
   return (
     <NoteContainer>
+      {/* Rating Buttons */}
       <ButtonContainer>
         <Wrapper onClick={() => setActiveButton(1)}>
           <ButtonRating
@@ -52,7 +55,7 @@ const Form = ({ time }) => {
           />
         </Wrapper>
       </ButtonContainer>
-
+      {/* author, note, & submit */}
       <FormContainer>
         <form onSubmit={activeButton ? handleSubmit : handleError}>
           <InputContainer>
@@ -93,6 +96,22 @@ const Form = ({ time }) => {
 
 export default Form;
 
+const NoteContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  border-radius: 10px;
+  border: 2px solid #373e47;
+  box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+
+  @media (max-width: 1024px) {
+    width: 85%;
+  }
+`;
+
+// to hold onClick
 const Wrapper = styled.div``;
 
 const ButtonContainer = styled.div`
@@ -106,29 +125,6 @@ const ButtonContainer = styled.div`
     margin: 0px auto;
     margin-top: 10px;
     padding: 5px;
-  }
-`;
-
-const CharCount = styled.div`
-  width: 60%;
-  margin: 0 auto;
-  text-align: right;
-
-  @media (max-width: 1024px) {
-    padding: 8px;
-    text-align: center;
-  }
-
-  h5 {
-    padding: 5px;
-    color: whitesmoke;
-    font-size: 1rem;
-    font-weight: 500;
-
-    @media (max-width: 500px) {
-      font-size: 0.9rem;
-      padding-bottom: 0px;
-    }
   }
 `;
 
@@ -174,7 +170,6 @@ const InputContainer = styled.div`
 
 const FormContainer = styled.div`
   @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,300&display=swap');
-
   margin: 8px;
   display: flex;
 
@@ -239,17 +234,25 @@ const FormContainer = styled.div`
   }
 `;
 
-const NoteContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  max-width: 1000px;
+const CharCount = styled.div`
+  width: 60%;
   margin: 0 auto;
-  border-radius: 10px;
-  border: 2px solid #373e47;
-  box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+  text-align: right;
 
   @media (max-width: 1024px) {
-    width: 85%;
+    padding: 8px;
+    text-align: center;
+  }
+
+  h5 {
+    padding: 5px;
+    color: whitesmoke;
+    font-size: 1rem;
+    font-weight: 500;
+
+    @media (max-width: 500px) {
+      font-size: 0.9rem;
+      padding-bottom: 0px;
+    }
   }
 `;

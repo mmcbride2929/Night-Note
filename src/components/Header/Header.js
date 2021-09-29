@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const Header = ({ date, time }) => {
+const Header = ({ date }) => {
   return (
     <HeaderContainer>
       <h1>How Did Today Go?</h1>
