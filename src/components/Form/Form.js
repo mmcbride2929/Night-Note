@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { useHistory } from 'react-router-dom';
 import ButtonRating from '../ButtonRating/ButtonRating';
+import db from '../../firebase/firebase';
 
 const Form = ({ time }) => {
   const [author, setAuthor] = useState(''); // author value
@@ -13,17 +14,11 @@ const Form = ({ time }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
     // creating a note object
     const noteObject = { author, note, activeButton, time };
-
-    // posting the note to the db
-    fetch('http://localhost:8000/notes', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(noteObject),
-    }).then(() => {
-      history.push('/notes'); // directs us to notes page after added to db
-    });
+    db.collection('notes').add(noteObject); // sending to firebase
+    history.push('/notes');
   };
 
   // require active button

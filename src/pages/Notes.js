@@ -5,6 +5,7 @@ import ThumbUpIcon from '@material-ui/icons/ThumbUp';
 import ThumbDownIcon from '@material-ui/icons/ThumbDown';
 import ThumbsUpDownIcon from '@material-ui/icons/ThumbsUpDown';
 import Pagination from '../components/Pagination/Pagination';
+import db from '../firebase/firebase';
 
 const Notes = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -12,25 +13,24 @@ const Notes = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage, setPostsPerPage] = useState(5);
 
-  // fetching notes from json.db
+  // fetching from firebase 'notes' collection
   useEffect(() => {
-    setTimeout(() => {
-      fetch('http://localhost:8000/notes')
-        .then((res) => {
-          return res.json();
-        })
-        .then((data) => {
+    db.collection('notes')
+      .orderBy('time')
+      .onSnapshot((snapshot) => {
+        setTimeout(() => {
+          // allow time for loading screen to appear
+          setNoteArray(snapshot.docs.map((doc) => doc.data()));
           setIsLoading(false);
-          setNoteArray(data); // capture data
-        });
-    }, 500);
+        }, 300);
+      });
   }, []);
 
   const indexOfLastPost = currentPage * postsPerPage;
   const indexOfFirstPost = indexOfLastPost - postsPerPage;
 
-  // am I changing the original array with slice and reverse?
-  const notesReversed = noteArray.slice(0).reverse(); // is this a shallow copy?
+  // *am I mutating the original array with slice and reverse?*
+  const notesReversed = noteArray.slice(0).reverse();
   const currentPosts = notesReversed.slice(indexOfFirstPost, indexOfLastPost);
 
   const paginate = (pageNumber) => {
