@@ -10,6 +10,7 @@ An app that allows users to quickly send themselves a summary of how their day w
 ## Features
 * Track user's productivity daily
 * Logs each blog's entry time
+* Desktop & Mobile friendly
 
 ## Architecture & Libraries
 * React 
