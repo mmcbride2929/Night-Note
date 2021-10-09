@@ -16,7 +16,7 @@ const Notes = () => {
   // fetching from firebase 'notes' collection
   useEffect(() => {
     db.collection('notes')
-      .orderBy('time')
+      .orderBy('dateForOrder') // sorting data by date
       .onSnapshot((snapshot) => {
         setTimeout(() => {
           // allow time for loading screen to appear
@@ -28,7 +28,6 @@ const Notes = () => {
 
   const indexOfLastPost = currentPage * postsPerPage;
   const indexOfFirstPost = indexOfLastPost - postsPerPage;
-
   // *am I mutating the original array with slice and reverse?*
   const notesReversed = noteArray.slice(0).reverse();
   const currentPosts = notesReversed.slice(indexOfFirstPost, indexOfLastPost);

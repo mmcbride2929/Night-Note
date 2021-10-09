@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { useHistory } from 'react-router-dom';
 import ButtonRating from '../ButtonRating/ButtonRating';
 import db from '../../firebase/firebase';
+import firebase from 'firebase';
 
 const Form = ({ time }) => {
   const [author, setAuthor] = useState(''); // author value
@@ -15,8 +16,13 @@ const Form = ({ time }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // creating a note object
-    const noteObject = { author, note, activeButton, time };
+    // creating timestamp for sorting in db
+    const timestamp = firebase.firestore.FieldValue.serverTimestamp;
+    let dateForOrder = timestamp();
+
+    // creating a note object to push to db
+    const noteObject = { author, note, dateForOrder, activeButton, time };
+
     db.collection('notes').add(noteObject); // sending to firebase
     history.push('/notes');
   };
