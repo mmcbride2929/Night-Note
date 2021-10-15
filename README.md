@@ -24,8 +24,8 @@ Clone the git repo & install dependencies from npm:
 * git clone: https://github.com/mmcbride2929/Night-Note.git
 * cd Night-Note
 * ```npm install```
+* npm i firebase@7.15.5-canary.9c409ea7
 * ```browser=chrome npm start```
-* make sure firebase V 7.15.5 is a dependency
 
 ## Whats Next? 
 * Users will be able create an account and work strictly with their own entries
